@@ -6,13 +6,13 @@ suitable ER/EER diagram for the system and Create Table with primary key and for
 constraints. a. Alter table with add n modify b. Drop table
 */
 
---Create Department table
+-- Create Department table
 CREATE TABLE Department (
     DepartmentID INT PRIMARY KEY,
     Name VARCHAR(50)
 );
 
---Create Student table
+-- Create Student table
 CREATE TABLE Student (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -20,7 +20,7 @@ CREATE TABLE Student (
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
 
---Create Course table
+-- Create Course table
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY,
     CourseName VARCHAR(50),
@@ -29,7 +29,7 @@ CREATE TABLE Course (
 );
 
 
---Insert sample data in all tables
+-- Insert sample data in all tables
 INSERT INTO Department VALUES (1, 'Computer'), (2, 'Mechanical');
 
 INSERT INTO Student VALUES (101, 'Avdhut', 1), (102, 'Shripad', 2);

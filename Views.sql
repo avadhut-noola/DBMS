@@ -3,13 +3,13 @@ using its corresponding view. Also consider restrictions on updatable views and 
 creation from multiple tables.
 */
 
---Create Department table
+-- To work on views create 
 CREATE TABLE Department (
     DepartmentID INT PRIMARY KEY,
     Name VARCHAR(50)
 );
 
---Create Student table
+-- Create Student table
 CREATE TABLE Student (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -17,7 +17,7 @@ CREATE TABLE Student (
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
 
---Create Course table
+-- Create Course table
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY,
     CourseName VARCHAR(50),
@@ -26,7 +26,7 @@ CREATE TABLE Course (
 );
 
 
---Insert sample data in all tables
+-- Insert sample data in all tables
 INSERT INTO Department VALUES (1, 'Computer'), (2, 'Mechanical');
 
 INSERT INTO Student VALUES (101, 'Avadhut', 1), (102, 'Shripad', 2);
@@ -56,12 +56,10 @@ UPDATE StudentDepartment
 SET Department = 'IT'
 WHERE StudentID = 101;
 
-/* This will throw an error:
-Column 'Department' is from a joined table and cannot be directly updated via view.
-
-Rule Reminder:
-Views based on multiple tables with joins or aggregations are not updatable unless using INSTEAD OF triggers
-(which MySQL doesn’t support, but some other DBMS like PostgreSQL do).
+/* Rule Reminder:
+According to MySQL's rules for updatable views, as long as the following conditions are met, the view can be updatable:
+The view must include all necessary fields to uniquely identify rows in the underlying table(s).
+The columns being updated must directly correspond to columns in the base table(s) without transformations.
 */
 
 -- View Creation from Multiple Tables
